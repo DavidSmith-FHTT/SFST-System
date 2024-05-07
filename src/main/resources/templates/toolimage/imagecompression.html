@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>图片压缩</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <style>
+        /* Global styles */
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            background-image: url(../images/611260ad2b9641628594349717.jpg);
+            background-size: 100%;
+        }
+
+        /* Header styles */
+        header {
+            /*background-color: #008080;*/
+            /*color: white;*/
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        /* Main content styles */
+        main {
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 30px 0 20px;
+        }
+
+        form {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        label {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        input[type=file], input[type=number], button[type=button] {
+            background-color: #ffffff;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+            margin: 10px;
+            padding: 10px;
+        }
+
+        button[type=button] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .download-a {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .download-a:hover {
+            background-color: #34495e;
+        }
+
+        button[type=button]:hover {
+            background-color: #3e8e41;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+            max-width: 100%;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>图片压缩</h1>
+</header>
+<main>
+    <h2>请选择一张图片：</h2>
+    <form>
+        <label for="file-input">Choose file:</label>
+        <input type="file" id="file-input">
+        <br>
+        <label for="width-input">Width:</label>
+        <input type="number" id="width-input" value="300">
+        <label for="height-input">Height:</label>
+        <input type="number" id="height-input" value="300">
+        <br>
+        <button type="button" onclick="compress()">压缩</button>
+        <button type="button" onclick="download()">下载</button>
+        <a class="download-a" th:href="@{/tool}">返回工具页面</a>
+    </form>
+    <h2>压缩后的图片如下：</h2>
+    <img id="compressed-image">
+</main>
+
+<script>
+    function compress() {
+        var input = document.getElementById("file-input");
+        if (!input.files || input.files.length == 0) {
+            alert("Please select an image to compress.");
+            return;
+        }
+        var width = document.getElementById("width-input").value;
+        var height = document.getElementById("height-input").value;
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var img = new Image();
+            img.onload = function() {
+                var canvas = document.createElement("canvas");
+                canvas.width = width;
+                canvas.height = height;
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0, width, height);
+                var dataURL = canvas.toDataURL();
+                var compressedImage = document.getElementById("compressed-image");
+                compressedImage.src = dataURL;
+                compressedImage.width = width;
+                compressedImage.height = height;
+            }
+            img.src = e.target.result;
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+
+    function download() {
+        var link = document.createElement('a');
+        link.download = 'compressed-image.png';
+        link.href = document.getElementById('compressed-image').src;
+        link.click();
+    }
+
+</script>
+
+<!--雪花效果-->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="http://www.lmlblog.com/winter/templets/xq/js/snowy.js"></script>
+<script src="http://www.lmlblog.com/blog/12/js/Snow.js"></script>
+<style>
+    .snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}
+</style>
+<div class="snow-container"></div>
+
+</body>
+</html>

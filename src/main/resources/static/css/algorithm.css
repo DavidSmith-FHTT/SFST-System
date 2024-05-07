@@ -1,0 +1,287 @@
+html,
+body {
+
+    margin: 0;
+    padding: 0;
+    height: 200vh;
+    /*overflow-x: hidden;*/
+    /*overflow-y: hidden;*/
+}
+
+.background {
+    background-size: cover;
+    background-position: 50% 50%;
+    min-height: 200vh;
+    font: 300px '';
+    line-height: 130vh;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    text-align: center;
+    /*overflow: hidden;*/
+    /*background: url(../images/page5.jpeg);*/
+
+}
+
+.background::after{
+    content: '';
+    background-size: cover;
+    background-image: inherit;
+    background-position: 50% 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -99;
+}
+
+h1 {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    letter-spacing: 10px;
+    color: #fff;
+}
+
+.h2-div {
+    top: 101vh;
+    width: 65%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 30px;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+h2 {
+    letter-spacing: -2px;
+    color: #fa9696;
+    font-family: STXingkai;
+    font-size: 29px;
+}
+
+.head{
+    /*position: absolute;*/
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 50%;
+    /* 声明一个容器 */
+    display: grid;
+    /*  声明列的宽度  */
+    grid-template-columns: repeat(3, 32.8%);
+    /*  声明行间距和列间距  */
+    grid-gap: 20px;
+    /*  声明行的高度  */
+    grid-template-rows: 10% 70%;
+    grid-template-areas:
+            "head-name head-name head-name"
+            "op op op"
+;
+
+}
+
+.head-name{
+    margin-top: -6%;
+    font-family: STXingkai;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    /*align-items: center;*/
+    /*justify-items: center;*/
+    font-size: 100px;
+    color: white;
+
+    grid-area: head-name;
+}
+.head-desc{
+    gap: 20px;
+    display: grid;
+    grid-area: op;
+    height: 600px;
+}
+
+
+
+.p1-image,.p2-image{
+    margin-top: 15px;
+}
+
+.p1-image{
+
+    height:100%;
+    position: relative;
+    width: 95%;
+    border-radius: 5px;
+
+    border: solid 10px;
+    background: none;
+    color: #F9CB8F;
+
+}
+
+.p1-image::before{
+    margin-top: -10px;
+    content: "";
+    position: absolute;
+    background: white;
+    width: 100px;
+    height: 20px;
+    transform: skewX(30deg);
+    transition: 0.4s linear;
+
+}
+.p1-image::after{
+    content: "";
+    position: absolute;
+    background: white;
+    width: 100px;
+    height: 20px;
+    transform: skewX(30deg);
+    transition: 0.4s linear;
+    z-index: 99;
+}
+.p1-image::before {
+    top: -4px;
+    left: 10%;
+}
+.p1-image::after{
+    bottom: -16px;
+    right: 10%;
+}
+
+
+.op{
+    margin-top: 0.5%;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    z-index: 99;
+}
+
+
+
+/*.wrapper {*/
+/*    position: relative;*/
+/*    !*进行视频裁剪*!*/
+/*    overflow: hidden;*/
+/*}*/
+
+.wrapper .video {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    /*保证视频内容始终居中*/
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    /*保证视频充满屏幕*/
+    object-fit: cover;
+
+
+}
+
+
+.img1 {
+    width: 20%;
+    height:50%;
+    background-color: #00B5AD;
+    position: relative;
+    margin: auto;
+}
+
+.img2 {
+    width: 20%;
+    height:50%;
+    background-color: #00B5AD;
+    position: relative;
+    margin: auto;
+}
+
+div.creater {
+    margin-top:150px;
+    margin-left: 265px;
+    display: flex;
+    height: 43px;
+    justify-content: center;
+    position: absolute;
+}
+
+.my-button {
+    display: inline-block;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    margin-left: 30px;
+}
+
+.my-button:hover {
+    background-color: #3e8e41;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.my-input {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    font-size: 18px;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.my-input:focus {
+    outline: none;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.return-button {
+    display: inline-block;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    margin-left: 30px;
+}
+
+.return-button:hover {
+    background-color: #3e8e41;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+div.return-creater {
+    margin-top:250px;
+    margin-left: 359px;
+    display: flex;
+    height: 43px;
+    justify-content: center;
+    position: absolute;
+}
+
+
+

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>图片滤镜</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 基本样式 */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            background-image: url(../images/611260ad2b9641628594349717.jpg);
+            background-size: 100%;
+        }
+
+        /* 页头样式 */
+        header {
+            /*background-color: #2c3e50;*/
+            /*color: #fff;*/
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 36px;
+            text-align: center;
+        }
+
+        /* 主要内容样式 */
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .form-container {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+
+        label {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        #load-button {
+            background-color: #2c3e50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #load-button:hover {
+            background-color: #34495e;
+        }
+
+        #image-container {
+            width: 100%;
+            max-width: 401px;
+            height: 0px;
+            position: relative;
+            padding-bottom: 13.25%;
+        }
+
+        #image {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            object-fit: contain;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin: 0 0 10px 0;
+            font-size: 24px;
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter {
+            background-color: #fff;
+            color: #2c3e50;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px 10px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .filter:hover {
+            background-color: #f1f1f1;
+        }
+
+        .filter.active {
+            background-color: #2c3e50;
+            color: #fff;
+        }
+
+        #actions {
+            display: flex;
+            justify-content: center;
+        }
+
+        #download-button {
+            background-color: #2c3e50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #download-button:hover {
+            background-color: #34495e;
+        }
+
+        .download-a {
+            background-color: #2c3e50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-a:hover {
+            background-color: #34495e;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <h1>图片滤镜</h1>
+</header>
+<main>
+    <div class="form-container">
+        <form>
+            <label for="file-input">选择一张图片：</label>
+            <input type="file" id="file-input" accept="image/*">
+            <button type="button" id="load-button">加载图片</button>
+        </form>
+    </div>
+    <div id="image-container">
+        <img id="image">
+    </div>
+    <section>
+        <h2>滤镜效果</h2>
+        <div class="filters">
+            <button type="button" class="filter" data-filter="none">无</button>
+            <button type="button" class="filter" data-filter="grayscale(100%)">黑白</button>
+            <button type="button" class="filter" data-filter="sepia(100%)">怀旧</button>
+            <button type="button" class="filter" data-filter="invert(100%)">反转</button>
+            <button type="button" class="filter" data-filter="brightness(50%)">亮度</button>
+            <button type="button" class="filter" data-filter="contrast(200%)">对比度</button>
+            <button type="button" class="filter" data-filter="hue-rotate(90deg)">色相</button>
+            <button type="button" class="filter" data-filter="saturate(200%)">饱和度</button>
+        </div>
+    </section>
+
+    <section>
+        <div id="actions">
+            <button type="button" id="download-button" style="margin-right: 20px">下载</button>
+            <a class="download-a" th:href="@{/tool}">返回工具页面</a>
+        </div>
+    </section>
+</main>
+<script src="script.js"></script>
+<script>
+    /*滤镜实现*/
+    // 等待DOM加载完成
+    document.addEventListener("DOMContentLoaded", function() {
+
+        // 获取需要操作的HTML元素的引用
+        const fileInput = document.getElementById("file-input");
+        const loadButton = document.getElementById("load-button");
+        const image = document.getElementById("image");
+        const filters = document.querySelectorAll(".filter");
+
+        // 添加“加载”按钮的事件监听器
+        loadButton.addEventListener("click", function() {
+
+            // 检查是否选择了文件
+            if (fileInput.files.length === 0) {
+                alert("请选择要加载的文件。");
+                return;
+            }
+
+            // 创建新的FileReader实例
+            const reader = new FileReader();
+
+            // 设置文件加载完成后的事件监听器
+            reader.addEventListener("load", function() {
+
+                // 将图片源设置为加载的文件数据
+                image.src = reader.result;
+
+            });
+
+            // 将所选文件读取为数据URL
+            reader.readAsDataURL(fileInput.files[0]);
+
+        });
+
+        // 添加滤镜按钮的事件监听器
+        filters.forEach(function(filter) {
+
+            filter.addEventListener("click", function() {
+
+                // 从data-filter属性获取滤镜类型
+                const filterType = this.dataset.filter;
+
+                // 将滤镜应用到图片上
+                image.style.filter = filterType;
+
+            });
+
+        });
+
+    });
+
+    /*图片下载实现*/
+    // 获取需要操作的HTML元素的引用
+    const downloadButton = document.getElementById("download-button");
+
+    // 添加“下载”按钮的事件监听器
+    downloadButton.addEventListener("click", function() {
+
+        // 检查是否有可下载的图像
+        if (!image.src) {
+            alert("请先加载图像并应用滤镜。");
+            return;
+        }
+
+        // 创建一个新的canvas元素，将图像绘制在其中，并应用滤镜效果
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = image.naturalWidth;
+        canvas.height = image.naturalHeight;
+        ctx.filter = image.style.filter;
+        ctx.drawImage(image, 0, 0);
+
+        // 获取图像的数据URL并设置为下载链接的href属性
+        const link = document.createElement("a");
+        link.download = "filtered-image.png";
+        link.href = canvas.toDataURL("image/png");
+
+        // 触发链接的点击事件，以启动下载
+        link.click();
+    });
+</script>
+
+<!--雪花效果-->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="http://www.lmlblog.com/winter/templets/xq/js/snowy.js"></script>
+<script src="http://www.lmlblog.com/blog/12/js/Snow.js"></script>
+<style>
+    .snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}
+</style>
+<div class="snow-container"></div>
+
+</body>
+</html>

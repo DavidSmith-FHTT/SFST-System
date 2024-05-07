@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>图片纵向拼接</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/css/attachimage.css" th:href="@{/css/attachimage.css}">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1 style="margin-top:-30px">图片纵向拼接</h1>
+    </div>
+    <form>
+        <div class="input-field" style="margin-bottom: 30px">
+            <!--            <label for="file-input" class="file-label">选择图片</label>-->
+            <input type="file" id="file-input" multiple>
+        </div>
+        <button type="button" onclick="concat()">拼接</button>
+    </form>
+    <div class="result">
+        <h1 style="margin-bottom: 15px">预览</h1>
+        <canvas id="canvas" style="width: 750px; height: 350px"></canvas>
+    </div>
+    <div style="margin-top: 20px">
+        <button type="button" onclick="download()" style="margin-left: 20px">下载图片</button>
+        <a class="download-button" th:href="@{/tool}" style="margin-left: 10px">返回工具页面</a>
+    </div>
+</div>
+<script src="../../static/js/attachimagevertical.js" th:src="@{/js/attachimagevertical.js}"></script>
+
+<!--雪花效果-->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="http://www.lmlblog.com/winter/templets/xq/js/snowy.js"></script>
+<script src="http://www.lmlblog.com/blog/12/js/Snow.js"></script>
+<style>
+    .snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}
+</style>
+<div class="snow-container"></div>
+
+
+</body>
+</html>

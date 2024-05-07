@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="baidu-site-verification" content="U67Xy1Qfos" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>风格迁移算法</title>
+
+    <link href="../static/images/favicon.ico" th:href="@{/images/me.jpg}" rel="icon" type="image/x-ico">
+    <!--semantic-ui-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <!--bootstrap-->
+    <link rel="stylesheet" type="text/css" href="bootstap/css/"></link>
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}">
+    <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
+    <!--图标-->
+    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3809804_24dqpgenbgh.css" th:href="@{//at.alicdn.com/t/c/font_3809804_24dqpgenbgh.css}">
+    <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
+    <!--小工具css-->
+    <link rel="stylesheet" href="/static/css/toolcss.css" th:href="@{/css/toolcss.css}">
+    <!--风格迁移算法css-->
+    <link rel="stylesheet" type="text/css" href="/static/css/algorithm.css" th:href="@{/css/algorithm.css}">
+</head>
+
+<body style="background: linear-gradient(to bottom, #D5DEE7 0%, #E8EBF2 50%, #E2E7ED 100%), linear-gradient(to bottom, rgba(0,0,0,0.02) 50%, rgba(255,255,255,0.02) 61%, rgba(0,0,0,0.02) 73%), linear-gradient(33deg, rgba(255,255,255,0.20) 0%, rgba(0,0,0,0.20) 100%); background-blend-mode: normal,color-burn;">
+<!--顶部图片-->
+<div class="head" align="center" style="margin-top: 1%!important;">
+    <img class="ui circular image" align="center" src="../static/images/logo.png"  th:src="@{/images/logo.png}" style="width: 60px;height: 60px;">
+    <div class="text-hasmokan" align="center" style=" margin-right:calc(100% - 340px)">易迁移</div>
+    <img class="jsj" src="../static/images/jsj.jpg"  th:src="@{/images/jsj.jpg}">
+</div>
+
+<div class="background" style="background-image: url(../static/images/page5.jpeg)"  th:style=" 'background-image: url(images/page5.jpeg)'">
+    <span>风格迁移</span>
+</div>
+<div class="h2-div">
+    <h2>
+        中国书法是独特艺术形式，对其古迹进行保护是非常紧急且有意义的事情。由于汉字本身的结构复杂性，对汉字图片进行风格迁移是更加艰巨的任务。
+        目前现存的许多字体生成算法存在许多缺陷。为了解决这些问题，本文提出了一个基于风格收集机制的一对多风格迁移模型SCGAN。
+        我们的模型可以通过少量的数据的训练，实现目标风格汉字图片的生成。我们的模型主要特点是，一方面基于提出的风格收集机制，
+        我们的模型可以从集合层次来进行风格特征的收集与转换。另一方面，基于对生成对抗网络结构的重新设计，
+        我们的模型可以完成一对多的风格迁移任务，这可以大量减少多目标风格迁移的工作量。与其他人工智能方法相比，本方法获得了更真实，
+        质量更高的结果。实验结果样本图片和数据度量结果验证了我们模型的优越性。
+    </h2>
+    <form th:action="@{/getAlgorithmPage}" method="post" >
+    <div class="creater">
+        <input class="my-input" type="text" name="src_txt" placeholder="请输入">
+        <button class="my-button">button</button>
+    </div>
+    </form>
+    <div class="return-creater">
+        <a th:href="@{welcome.html}" >
+            <button type="button" class="return-button"><i class="home icon"></i>返回首页</button>
+        </a>
+    </div>
+</div>
+
+<script>
+    const background = document.querySelector(".background")
+
+    document.addEventListener('scroll', () => {
+        const scrollY = window.scrollY
+
+        if (scrollY !== 0) {
+            background.style.backgroundPosition = `calc(50% + ${scrollY}px) calc(50% + ${scrollY}px)`
+        }else{
+            background.style.backgroundPosition = ''
+        }
+    })
+</script>
+
+<!--底部栏-->
+<footer class="ui inverted vertical segment m-padded-tb-massive m-opacity" style="height: 200px;width: 100%" >
+    <!--容器-->
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div style="margin-left: 200px">
+                <div class="ui inverted link list">
+                    <div class="item1">
+                        <!--微信二维码-->
+                        <div style="font-size: large;font-weight: bold" class="ui inverted m-text-thin m-text-spaced " >关注微信公众号</div>
+                        <img src="../../static/images/jsj.png" th:src="@{/images/jsj.png}"  class="ui m-margin-top rounded image" alt="" style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <div class="ui vertical divider"></div>
+            <div style="margin-left: 500px ;align-items: center;justify-items: center;">
+                <div style="font-size: large;font-weight: bold" class="ui inverted m-text-thin m-text-spaced m-margin-top-max" >联系我们</div>
+                <div class="ui inverted link list">
+                    <div href="#" class="m-text-thin">Email：1474440247@qq.com</div>
+                    <div href="#" class="m-text-thin">QQ：1474440247</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script src="../static/lib/waypoints/jquery.waypoints.min.js" th:src="@{/lib/waypoints/jquery.waypoints.min.js}"></script>
+
+<!--雪花效果-->
+<script src="http://www.lmlblog.com/winter/templets/xq/js/snowy.js"></script>
+<script src="http://www.lmlblog.com/blog/12/js/Snow.js"></script>
+<style type="text/css">
+    .snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}
+</style>
+<div class="snow-container"></div>
+
+</body>
+</html>

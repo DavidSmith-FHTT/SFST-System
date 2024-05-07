@@ -1,0 +1,40 @@
+#端口
+server:
+  port: 8086
+
+#数据库
+spring:
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/templates/,classpath:/static/,file:${ImageLocation}
+  datasource:
+    username: root
+    password: 18295857598
+    url: jdbc:mysql://localhost:3306/shufa?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+#mybatis
+mybatis:
+  type-aliases-package: com.ldf.demo.dto
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
+
+#算法路径
+comment.avatar: /images/avatar.png
+message.avatar: /images/avatar.png
+hessian-url: "http://127.0.0.1:8087/styleTransfer"
+ImageLocation: /home/dzq/IdeaProject/AlgorithmBackend/image
+
+
+#配置日志
+#logging:
+#  level:
+#    #不同目录下的日志可配置不同级别
+#    root: info
+#    com.star: debug
+#    #采用相对路径方式将日志文件输出到【log/blog-dev.log】
+#  file:
+#    name: log/blog-dev.log

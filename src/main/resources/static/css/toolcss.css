@@ -1,0 +1,315 @@
+/* 清除内、外间距 */
+/** {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    !* 添加内间距不扩大div *!*/
+/*    box-sizing: border-box;*/
+/*}*/
+/*下拉选择栏css*/
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    text-decoration: none;
+
+    list-style: none;
+
+    /* 我们这里把内外边距变成0，去掉一些样式 */
+
+}
+
+
+.dropbox {
+
+    position: absolute;/*这里一定要设置*/
+    z-index: 999999;/*这里是该元素与显示屏的距离，据说越大越好，但是我也没有看到效果，因为没有它也是可以的*/
+
+    z-index:199;
+    width: 200px;
+
+}
+
+/* 这里是显示droplist */
+
+.dropbox:hover .droplist {
+    transition: 0.3s;
+    display: block;
+
+}
+
+.dropbt {
+
+    width: 200px;
+
+    height: 40px;
+
+    background: #369;
+
+    /* 让字水平垂直居中 */
+
+    text-align: center;
+
+    line-height: 40px;
+
+    /* 改字的颜色 */
+
+    color: #fff;
+
+    /* 鼠标悬停变小手 */
+
+    cursor: pointer;
+
+}
+
+.droplist {
+
+    /* 给它一个阴影 */
+
+    box-shadow: 0 1px 2px #222;
+
+    /* 让droplist看不见 */
+
+    display: none;
+
+}
+
+.droplist li {
+
+
+    /* 设置每一项的高，让字水平垂直居中 */
+
+    height: 40px;
+
+    text-align: center;
+
+    line-height: 40px;
+
+}
+
+/* 设置超链接悬停时背景变色 */
+
+.droplist a:hover {
+    transition: 0.3s;
+    background: #ccc;
+
+}
+
+.droplist a {
+
+    /* 修改变色的范围 */
+
+    display: block;
+
+    /* 忘记让链接颜色变黑色了 */
+
+    color: #000;
+
+}
+
+
+
+
+
+
+/*以下为汉字生成 css*/
+
+
+
+
+
+.col-line{
+    /*margin-left: 0%;*/
+    height: 60px;
+    width: 3px;
+    border-radius: 25%;
+    background-color: rgba(222,156,0,50%);
+}
+
+
+.div-output{
+
+    width: 48vw;
+    height: 100%;
+    background: -webkit-linear-gradient(top,white,rgb(246,223,169));
+    padding: 0 0 0 0;
+}
+.mid{
+    width: auto;
+    margin-top: -50px;
+}
+
+.label{
+    height: 100px;
+    font-size:60px;
+    font: 60px/1.5 Tahoma,Helvetica,Arial,'行书',sans-serif;
+}
+
+.head-container{
+    margin-top: 100px;
+    width: 100%;
+    height: 400px;
+    align-items: center;
+}
+
+.head-container-most{
+    margin-top: 10px;
+    width: 100%;
+    height: 200px;
+    align-items: center;
+}
+
+.return-img{
+    margin-left: 10px;
+    width: 230px;
+    height: 230px;
+    border-radius: 5%;
+    border-left: 3px rgba(222,156,0,50%);
+}
+
+.tool-box {
+    height: 30vh;
+    border-radius: 10px;
+
+    /*background: #09203f;*/
+    display: flex;
+    /* 垂直居中 */
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 纵向排列 */
+    flex-direction: column;
+    /* 无法选中文字 */
+    user-select: none;
+    /* 元素之间的上下间距 */
+    gap: 20px;
+    margin-top: -130px;
+}
+
+.tool-box h2 {
+    color: white;
+}
+
+.inputBox {
+    position: relative;
+    width: 100%;
+}
+
+.inputBox input {
+    width: 100%;
+    height: 10px;
+    padding: 15px;
+    border: 1px solid black;
+    background: beige;
+    border-radius: 5px;
+    outline: none;
+    color: white;
+    font-size: 1.5em;
+    /* 过渡 */
+    transition: 0.5s;
+}
+
+.inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    font-family: youyuan;
+    color: black;
+    /* 大写字母 */
+    text-transform: uppercase;
+    /* 过渡 */
+    transition: 0.5s;
+}
+
+.inputBox input:valid~span,
+.inputBox input:focus~span {
+    color: rgb(246,223,169);
+    /* 变换位置 */
+    transform: translateX(15px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 5px;
+    background: #09203f;
+    letter-spacing: 0.1em;
+}
+
+.inputBox:nth-child(3) input:valid~span,
+.inputBox:nth-child(3) input:focus~span {
+    background: rgb(246,223,169);
+    color: white;
+}
+
+.inputBox input:valid,
+.inputBox input:focus {
+    border: 1px solid rgb(246,223,169);
+}
+
+/* 给按钮写样式 */
+.buttonBox button {
+    padding: 10px 30px;
+    width: 140px;
+    height: 35px;
+    border-radius: 5px;
+    background:beige;
+    font-size: 1em;
+    color: black;
+    border: 1px solid black;
+    font-weight: 600;
+}
+
+.buttonBox button:hover {
+    color: black;
+    border: 1px solid black;
+}
+
+/*cxk*/
+/*下面不懂是啥 不敢动*/
+@media screen and (max-width: 1680px) {
+    #picture-main .thumb {
+        -moz-transition-delay: 2.075s;
+        -webkit-transition-delay: 2.075s;
+        -ms-transition-delay: 2.075s;
+        transition-delay: 2.075s;
+        height: calc(40vh - 2em);
+        min-height: 20em;
+        width: 33.33333%;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    #picture-main .thumb {
+        -moz-transition-delay: 1.625s;
+        -webkit-transition-delay: 1.625s;
+        -ms-transition-delay: 1.625s;
+        transition-delay: 1.625s;
+        height: calc(40vh - 2em);
+        min-height: 20em;
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    #picture-main .thumb {
+        -moz-transition-delay: 2.075s;
+        -webkit-transition-delay: 2.075s;
+        -ms-transition-delay: 2.075s;
+        transition-delay: 2.075s;
+        height: calc(28.57143vh - 1.33333em);
+        min-height: 18em;
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #main .thumb {
+        -moz-transition-delay: 1.175s;
+        -webkit-transition-delay: 1.175s;
+        -ms-transition-delay: 1.175s;
+        transition-delay: 1.175s;
+        height: calc(40vh - 2em);
+        min-height: 18em;
+        width: 100%;
+    }
+}
